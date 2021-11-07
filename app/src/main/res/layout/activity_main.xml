@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".view.MainActivity">
+
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <EditText
+            android:id="@+id/edtChangeDesiredSize"
+            android:hint="Desired width in px for downsampling process"
+            android:textAlignment="center"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_marginTop="40dp"
+            android:id="@+id/imgVDownsampledImage"
+            android:layout_width="250dp"
+            android:src="@drawable/load_image"
+            android:layout_height="250dp" />
+
+        <Button
+            android:layout_marginTop="30dp"
+            android:id="@+id/btnPickImage"
+            android:text="Pick Image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:id="@+id/tvRawImageSize"
+            android:textAlignment="viewStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:textSize="20sp"
+            android:textAlignment="viewStart"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tvDownsampledImageSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
