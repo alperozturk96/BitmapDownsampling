@@ -8,12 +8,13 @@ The purpose of this application is to downsample bitmap for new and old devices.
 In this project user can able to choose desired downsample width and see difference on screen.
 
 
-###### Sample Image Info:
+###### Comparasion:
 
-12000 x 6660 pixel
-32mb file size
+| RawImage  | DownsampleTo100px |  | DownsampleTo1000px |   | DownsampleTo3000px | 
+| ------------- | ------------- |  | ------------- |        | ------------- |
+| 32mb file size  | 75kb file size  | | 4875kb file size  |   | 19.5mb file size  |
 
-[Sample Image Link](https://images7.alphacoders.com/671/671281.jpg)
+[Raw Image Link](https://images7.alphacoders.com/671/671281.jpg)
 
 https://user-images.githubusercontent.com/67455295/140652845-bd4eaee2-3336-45fd-b613-11f8c6818c0c.mp4
 
