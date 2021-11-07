@@ -10,9 +10,9 @@ In this project user can able to choose desired downsample width and see differe
 
 ###### Comparasion:
 
-| RawImage  | DownsampleTo100px |  | DownsampleTo1000px |   | DownsampleTo3000px | 
-| ------------- | ------------- |  | ------------- |        | ------------- |
-| 32mb file size  | 75kb file size  | | 4875kb file size  |   | 19.5mb file size  |
+| RawImage      | Downsample (3000px) | Downsample (1000px) | Downsample (100px) | 
+| ------------- | -------------       | -------------       | -------------      |
+| 32mb          | 19.5mb              | 4875kb              | 75kb               |
 
 [Raw Image Link](https://images7.alphacoders.com/671/671281.jpg)
 
