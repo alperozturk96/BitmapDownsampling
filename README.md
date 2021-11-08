@@ -8,7 +8,7 @@ The purpose of this application is to downsample bitmap for new and old devices.
 In this project user can able to choose desired downsample width and see difference on screen.
 
 
-###### Comparasion:
+###### Comparison:
 
 | RawImage      | Downsample (3000px) | Downsample (1000px) | Downsample (100px) | 
 | ------------- | -------------       | -------------       | -------------      |
