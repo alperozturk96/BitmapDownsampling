@@ -3,7 +3,7 @@
 
 ###### This demo project completed at fall of 2021
 
-The purpose of this application is to downsample bitmap for new and old devices.
+The purpose of this application is to downsample bitmap with modern and old method.
 
 In this project user can able to choose desired downsample width and see difference on screen.
 
