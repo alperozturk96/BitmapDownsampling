@@ -62,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int getDownsampledBitmapSize(Intent data)
     {
-        BitmapManager bitmapManager = new BitmapManager();
-        Bitmap bitmap = bitmapManager.getBitmapFromGallery(data,this);
+        Bitmap bitmap = BitmapManager.getBitmapFromGallery(data,AppConst.desiredWidth,this);
         loadDownsampledBitmapToPreview(bitmap);
         int downsampledSize = BitmapCompat.getAllocationByteCount(bitmap);
         return downsampledSize;
@@ -74,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
         try
         {
             Bitmap rawBitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data);
-            int rawSize = BitmapCompat.getAllocationByteCount(rawBitmap);
-            return rawSize;
+            return BitmapCompat.getAllocationByteCount(rawBitmap);
         }
         catch (IOException e)
         {

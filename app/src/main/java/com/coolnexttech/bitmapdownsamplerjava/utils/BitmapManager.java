@@ -5,12 +5,8 @@ import android.graphics.BitmapFactory;
 
 
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
-import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
@@ -25,14 +21,13 @@ import java.io.InputStream;
 
 public class BitmapManager {
 
-
     @RequiresApi(api = Build.VERSION_CODES.P)
-    private Bitmap downscaleBitmapViaImageDecoder(Uri source, Context context) {
+    private static Bitmap downscaleViaImageDecoder(Uri source, int desiredWith, Context context) {
         try
         {
             ImageDecoder.OnHeaderDecodedListener onHeaderDecodedListener = (imageDecoder, imageInfo, source1) -> {
                 Size size = imageInfo.getSize();
-                int sampleSize = calculateInSampleSize(size.getWidth(), Math.min(AppConst.desiredWidth, size.getWidth()));
+                int sampleSize = calculateInSampleSize(size.getWidth(), Math.min(desiredWith, size.getWidth()));
                 int newHeight = size.getHeight() / sampleSize;
                 int newWidth = size.getWidth() / sampleSize;
                 Size newSize = new Size(newWidth, newHeight);
@@ -43,13 +38,13 @@ public class BitmapManager {
             return ImageDecoder.decodeBitmap(decoderSource, onHeaderDecodedListener);
         }
         catch (IOException e) {
-            Log.d("","error caught at downscaleBitmapViaImageDecoder: "+e);
+            Log.d("BitmapManager","error caught at downscaleBitmapViaImageDecoder: "+e);
             e.printStackTrace();
             return null;
         }
     }
 
-    private Bitmap downscaledBitmapViaBitmapFactory(Uri source, Context context, boolean isMediaReadingFromFile, String mediaPath) {
+    private static Bitmap downscaleViaBitmapFactory(Uri source, Context context, boolean isMediaReadingFromFile, String mediaPath) {
         final BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
 
         try {
@@ -85,7 +80,7 @@ public class BitmapManager {
         return getResizedBitmap(scaledBitmap, AppConst.desiredWidth);
     }
 
-    private int calculateInSampleSize(int currentWidth, int requiredWidth) {
+    private static int calculateInSampleSize(int currentWidth, int requiredWidth) {
         int inSampleSize = 1;
 
         if (currentWidth > requiredWidth) {
@@ -98,7 +93,7 @@ public class BitmapManager {
         return inSampleSize;
     }
 
-    private Bitmap getResizedBitmap(Bitmap image, int maxSize) {
+    private static Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
         int height = image.getHeight();
 
@@ -114,22 +109,22 @@ public class BitmapManager {
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
 
-    public Bitmap getBitmapFromGallery(Intent data, Context context){
+    public static Bitmap getBitmapFromGallery(Intent data, int desiredWidth, Context context){
         Uri imagePickedFromGallery = data.getData();
         try
         {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P)
             {
                 //Modern way and for new devices
-                return downscaleBitmapViaImageDecoder(imagePickedFromGallery,context);
+                return downscaleViaImageDecoder(imagePickedFromGallery,desiredWidth, context);
             }
             else {
-                return downscaledBitmapViaBitmapFactory(imagePickedFromGallery,context,false,null);
+                return downscaleViaBitmapFactory(imagePickedFromGallery,context,false,null);
             }
         }
         catch (Exception e)
         {
-            Log.d("Exception", "error caught at bitmap decode: " + e);
+            Log.d("BitmapManager", "error caught at bitmap decode: " +e);
             return null;
         }
     }
